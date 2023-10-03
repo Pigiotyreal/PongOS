@@ -16,7 +16,7 @@ BEGIN_PM:
     call print_string
     jmp $
 
-msgprotected db "Hello, protected mode!", 0
+msgprotected db "Hello protected mode!", 0
 
 times 510-($-$$) db 0
 dw 0xaa55
