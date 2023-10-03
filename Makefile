@@ -1,3 +1,8 @@
+BOOTDIR = boot
+KERNDIR = kernel
+MAINBOOT = boot/main.asm
+BOOTBIN = bin/boot.bin
+
 all:
-	nasm boot/main.asm -f bin -o bin/boot.bin
-	qemu-system-x86_64 -fda bin/boot.bin
+	nasm $(MAINBOOT) -f bin -o $(BOOTBIN)
+	qemu-system-x86_64 -fda $(BOOTBIN)
