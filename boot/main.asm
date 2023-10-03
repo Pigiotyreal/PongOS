@@ -1,23 +1,22 @@
-[bits 16]
 [org 0x7c00]
 
-mov si, msg
-call print
+mov bp, 0x9000
+mov sp, bp
 
+call switch_to_pm
 jmp $
 
-print:
-	mov ah, 0x0e
-	mov bh, 0x00
-	mov bl, 0x07
-	mov al, [si]
-	int 0x10
-	inc si
-	cmp al, 0
-	jne print
-	ret
+%include "boot/gdt.asm"
+%include "boot/print.asm"
+%include "boot/switch.asm"
 
-msg: db "Hello world!", 0
+[bits 32]
+BEGIN_PM:
+    mov ebx, msgprotected
+    call print_string
+    jmp $
+
+msgprotected db "Hello, protected mode!", 0
 
 times 510-($-$$) db 0
 dw 0xaa55
