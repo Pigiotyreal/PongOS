@@ -4,7 +4,7 @@ mov bp, 0x8000
 mov sp, bp
 
 mov bx, 0x9000
-mov dh, 4 ;4 sectors
+mov dh, 8 ;8 sectors, 4KB
 
 call disk_load
 
