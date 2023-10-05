@@ -9,8 +9,8 @@ call print_16
 xor ebx, ebx
 
 call clear_screen
-call loadkernel
 
+call loadkernel
 call switch_to_pm
 jmp $
 
@@ -53,8 +53,10 @@ print_16_end:
     ret
 
 clear_screen:
-    mov ax, 0x03
+    mov ah, 0x00
+    mov al, 0x03
     int 0x10
+    ret
 
 jmp $
 
