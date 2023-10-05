@@ -1,6 +1,6 @@
 [bits 16]
 
-disk_load
+disk_load:
     pusha
     push dx
 

@@ -1,6 +1,8 @@
 void main() {
-    char* video_memory = (char*) 0xb8000;
-    *video_memory = 'X';
+    char* vga = (char*)0xb8000;
+    *vga = 'X';
 
-    while(1);
+    while (1) {
+        asm("hlt");
+    }
 }
