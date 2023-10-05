@@ -38,6 +38,16 @@ print_16_loop:
     inc ebx
     jmp print_16_loop
 
+print_16_nl:
+    pusha
+    mov ah, 0x0e
+    mov al, 0x0a
+    int 0x10
+    mov al, 0x0d
+    int 0x10
+    popa
+    ret
+
 print_16_end:
     ret
 
