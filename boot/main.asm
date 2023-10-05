@@ -8,6 +8,7 @@ mov ebx, msgreal
 call print_16
 xor ebx, ebx
 
+call clear_screen
 call loadkernel
 
 call switch_to_pm
@@ -50,6 +51,10 @@ print_16_nl:
 
 print_16_end:
     ret
+
+clear_screen:
+    mov ax, 0x03
+    int 0x10
 
 jmp $
 
